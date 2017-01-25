@@ -1,8 +1,71 @@
 <html>
 
 <head>
-    <meta charset="utf-8"><style> @import "style.css"; @import url('https://fonts.googleapis.com/css?family=Open+Sans');</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="jquery-3.1.1.js"></script>
 </head>
-Васыль?
+
+<body ng-app="bprotsyk" ng-controller="bctrl" ng-cloak>
+    <div ng-model="content" id="content" layout="column" layout-align="center center">
+        <div class="card" id="card1" layout="row">
+            <div flex="30" layout="row" layout-align="center center">
+                <md-checkbox ng-change="checkClick()" id="bigCheckbox" ng-model="isChecked" aria-label="cb" />
+            </div>
+            <div flex="70" layout="row" layout-align="start center">
+                <div id="title">{{title}}</div>
+            </div>
+        </div>
+        <div layout="column">
+            <div class="card1" id="card2" layout="row" flex="50" layout-align="center center">
+                <div id="title1">вйобуй по хорошему</div>
+            </div>
+        </div>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+        <script type="text/javascript">
+            angular.module('bprotsyk', ['ngMaterial'])
+                .controller('bctrl', function($scope) {
+                    $scope.title = 'Васыль?'
+                    $scope.was = false;
+                    $scope.checkClick = function() {
+                        if ($scope.was) return;
+                        $scope.was = true;
+                        var card1 = $("#card1");
+                        var card2 = $("#card2");
+                        var box = $("#bigCheckbox");
+                        var title = $("#title");
+                        card1.animate({
+                            top: '-=120px',
+                            height: '-=150px'
+                        }, {
+                            duration: 500,
+                            complete: function() {
+                                title.text('Васыль,');
+                                card2.css('display', 'block');
+                                card2.delay(1500).animate({
+                                    opacity: 1.0
+                                }, {
+                                    duration: 500
+                                });
+                            }
+                        });
+                    }
+                })
+                .config(function($mdThemingProvider) {
+                    $mdThemingProvider.theme('default')
+                        .primaryPalette('pink')
+                        .accentPalette('blue');
+                });
+        </script>
+</body>
 
 </html>

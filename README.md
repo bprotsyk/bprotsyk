@@ -1,4 +1,3 @@
-My Portfolio
-=========================
+bprotsyk portfolio
 
-Powered by Jekyll
+Powered by Pepsi
